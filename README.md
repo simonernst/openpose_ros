@@ -45,7 +45,7 @@ https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/254570df262d91b194
    3.3 Test
    From your openpose directory, you can try an example :
    ```bash
-   	./build/examples/openpose/openpose.bin --video examples/media/video.avi
+   ./build/examples/openpose/openpose.bin --video examples/media/video.avi
    ```
 
 4. Openpose_ros installation
@@ -60,8 +60,8 @@ https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/254570df262d91b194
    ```bash
    git clone https://github.com/ros-perception/vision_opencv
    ```
-   #### checkout the branch (default is for ROS neotic) !!!! 
-   `git checkout melodic` (for Ubuntu 18) or `git checkout kinetic` for Ubuntu 16
+      #### checkout the branch (default is for ROS neotic) !!!! 
+      `git checkout melodic` (for Ubuntu 18) or `git checkout kinetic` for Ubuntu 16
    
    4.3 Ensure opencv4 compatibility with vision_opencv repo
    
@@ -69,7 +69,9 @@ https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/254570df262d91b194
    * Remove in cv_bridge/CMakeLists.txt line 16 the number "3" (or change it with 4)
    * In cv_bridge/src CMakeLists.txt line 35 change to if (OpenCV_VERSION_MAJOR VERSION_EQUAL 4)
    * In cv_bridge/src/module_opencv3.cpp change signature of two functions :
+   
       * `UMatData* allocate(int dims0, const int* sizes, int type, void* data, size_t* step, int flags, UMatUsageFlags usageFlags) const`    **to**    `UMatData* allocate(int dims0, const int* sizes, int type, void* data, size_t* step, AccessFlag flags, UMatUsageFlags usageFlags) const`
+      
       * `bool allocate(UMatData* u, int accessFlags, UMatUsageFlags usageFlags) const`    **to**   `bool allocate(UMatData* u, AccessFlag accessFlags, UMatUsageFlags usageFlags) const`
    
    4.4 Modify the model_folder line in openpose_ros/src/openpose_flags.cpp to where openpose is installed (line 30).
@@ -82,7 +84,7 @@ https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/254570df262d91b194
    ```
    4.6 Modify the other parameters in openpose_ros/src/openpose_flags.cpp and openpose_ros/launch/openpose_ros.launch to your liking such as enabling face and hands detection.
 
-   4.7 Run `catkin_make` from your catkin_workspace directory.
+   4.7 Build with `catkin_make` from your catkin_workspace directory.
 
 
 ## Running
