@@ -13,12 +13,13 @@ Example ROS catkin package that utilizes the OpenPose library from https://githu
    ```
    
 2. Cmake upgrade (only if `cmake -V`show < 3.12.2)
+   ```bash
    wget http://www.cmake.org/files/v3.12/cmake-3.12.2.tar.gz
    tar -xvzf cmake-3.12.2.tar.gz 
-	cd cmake-3.12.2/
-	./configure 
-	make
-   
+   cd cmake-3.12.2/
+   ./configure 
+   make
+   ```  
    
 3. Install OpenPose
 
@@ -50,6 +51,8 @@ https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/254570df262d91b194
 
 4. Openpose_ros installation
 
+   **The following steps are in a catkin workspace**
+   
    4.1 Clone the repo
    
    ```bash
