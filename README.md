@@ -2,13 +2,8 @@
 
 Example ROS catkin package that utilizes the OpenPose library from https://github.com/CMU-Perceptual-Computing-Lab/openpose.
 
-## System
-Tested on:
-* Ubuntu 14.04 / Ubuntu 16.04
-* ROS Indigo / Kinetic
-* CUDA 8.0 / CUDA 10.0 / CUDA 10.1
-* cuDNN 5.1 / cuDNN 6.0 / cuDNN 7.2.4 / cuDNN 7.5.0
-* OpenCV 3.3 / OpenCV 3.4
+## For Opencv4 devices (e.g Jetson Xavier), please see the wiki on the opencv4_compatibility branch
+
 
 ## Installation Steps
 
@@ -16,40 +11,62 @@ Tested on:
    ```bash
    git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose.git
    ```
-2. Install OpenPose
+   
+2. Cmake upgrade (only if `cmake -V`show < 3.12.2)
+   wget http://www.cmake.org/files/v3.12/cmake-3.12.2.tar.gz
+   tar -xvzf cmake-3.12.2.tar.gz 
+	cd cmake-3.12.2/
+	./configure 
+	make
+   
+   
+3. Install OpenPose
+
+   3.1 Dependencies
+   ```bash
+   sudo apt-get install libboost-dev libboost-all-dev
+
+   sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev libatlas-base-dev liblmdb-dev libblas-dev libatlas-base-dev libprotobuf-dev libleveldb-dev libsnappy-dev libhdf5-serial-dev protobuf-compiler
+   ```
+   
+   3.2 OpenPose
    ```bash
    cd openpose
-   mkdir build && cd build
-   cmake ..
-   make -j`nproc`
+   cd models && sh getModels.sh && cd ..
+	mkdir build && cd build && cmake ..
+	make -j`nproc`
+	sudo make install
     ```
 Make sure to run `sudo make install` in the build folder at the end.    
     
 More OpenPose instructions for specific installations can be found here :
 https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/254570df262d91b1940aaf5797ba6c5d6db4b52f/doc/installation.md. 
 
-3. Clone this repository into your catkin_workspace/src directory.
+   3.3 Test
+   From your openpose directory, you can try an example :
+   ```bash
+   	./build/examples/openpose/openpose.bin --video examples/media/video.avi
+   ```
+
+4. Openpose_ros installation
+
+   4.1 Clone
+   
    ```bash
    git clone https://github.com/simonernst/openpose_ros.git
    ```
-   3.1
-   If your are using a device with OpenCv4 (e.g Jetson Xavier), `git checkout opencv4_compatibility`
    
-4. Modify the model_folder line in openpose_ros/src/openpose_flags.cpp to where openpose is installed (line 30).
+5. Modify the model_folder line in openpose_ros/src/openpose_flags.cpp to where openpose is installed (line 30).
    ```bash
    DEFINE_string(model_folder,             "/path/to/openpose/models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
    ```
-5. Modify the image_topic parameter in openpose_ros/launch/openpose_ros.launch to the image_topic you want to process.
+6. Modify the image_topic parameter in openpose_ros/launch/openpose_ros.launch to the image_topic you want to process.
    ```bash
    <param name="image_topic"     value="/camera/image_raw" />
    ```
-6. Modify the other parameters in openpose_ros/src/openpose_flags.cpp and openpose_ros/launch/openpose_ros.launch to your liking such as enabling face and hands detection.
-7. Run catkin_make from your catkin_workspace directory.
+7. Modify the other parameters in openpose_ros/src/openpose_flags.cpp and openpose_ros/launch/openpose_ros.launch to your liking such as enabling face and hands detection.
+8. Run catkin_make from your catkin_workspace directory.
 
-### Potential Installation Issues
-1. If cv_bridge is causing you errors and/or you decide to use OpenCV 3.2+, copy the cv_bridge folder from https://github.com/ros-perception/vision_opencv into your catkin_workspace/src directory. 
-
-   1.1 Check the branch your are on when cloning (default is neotic). `git checkout melodic` for Ubuntu 18 or `git checkout kinetic` for Ubuntu 16
 
 ## Running
 ```bash
