@@ -7,6 +7,8 @@ Example ROS catkin package that utilizes the OpenPose library from https://githu
 
 ## Installation Steps
 
+### If Openpose is already installed on your system, jump to step 3
+
 1. Clone OpenPose somewhere not in your catkin_workspace.
    ```bash
    git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose.git
