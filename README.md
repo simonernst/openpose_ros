@@ -19,14 +19,8 @@ Tested on:
 2. Install OpenPose
    ```bash
    cd openpose
-    ```
-   ```bash
    mkdir build && cd build
-    ```
-   ```bash
    cmake ..
-    ```
-   ```bash
    make -j`nproc`
     ```
 Make sure to run `sudo make install` in the build folder at the end.    
@@ -55,7 +49,7 @@ https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/254570df262d91b194
 ### Potential Installation Issues
 1. If cv_bridge is causing you errors and/or you decide to use OpenCV 3.2+, copy the cv_bridge folder from https://github.com/ros-perception/vision_opencv into your catkin_workspace/src directory. 
 
-   1.1 Check the branch your are on when cloning (default is neotic). 'melodic' for Ubuntu 18 or 'kinetic' for Ubuntu 16
+   1.1 Check the branch your are on when cloning (default is neotic). `git checkout melodic` for Ubuntu 18 or `git checkout kinetic` for Ubuntu 16
 
 ## Running
 ```bash
