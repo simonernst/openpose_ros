@@ -45,7 +45,7 @@ https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/254570df262d91b194
    3.3 Test
    From your openpose directory, you can try an example :
    ```bash
-   	./build/examples/openpose/openpose.bin --video examples/media/video.avi
+   ./build/examples/openpose/openpose.bin --video examples/media/video.avi
    ```
 
 4. Openpose_ros installation
@@ -56,16 +56,17 @@ https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/254570df262d91b194
    git clone https://github.com/simonernst/openpose_ros.git
    ```
    
-5. Modify the model_folder line in openpose_ros/src/openpose_flags.cpp to where openpose is installed (line 30).
+   4.2 Modify the model_folder line in openpose_ros/src/openpose_flags.cpp to where openpose is installed (line 30).
    ```bash
    DEFINE_string(model_folder,             "/path/to/openpose/models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
    ```
-6. Modify the image_topic parameter in openpose_ros/launch/openpose_ros.launch to the image_topic you want to process.
+   4.3 Modify the image_topic parameter in openpose_ros/launch/openpose_ros.launch to the image_topic you want to process.
    ```bash
    <param name="image_topic"     value="/camera/image_raw" />
    ```
-7. Modify the other parameters in openpose_ros/src/openpose_flags.cpp and openpose_ros/launch/openpose_ros.launch to your liking such as enabling face and hands detection.
-8. Run catkin_make from your catkin_workspace directory.
+   4.4 Modify the other parameters in openpose_ros/src/openpose_flags.cpp and openpose_ros/launch/openpose_ros.launch to your liking such as enabling face and hands detection.
+   
+   4.5 Run `catkin_make` from your catkin_workspace directory.
 
 
 ## Running
