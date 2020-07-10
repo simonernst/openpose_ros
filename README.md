@@ -2,7 +2,7 @@
 
 Example ROS catkin package that utilizes the OpenPose library from https://github.com/CMU-Perceptual-Computing-Lab/openpose.
 
-## For Opencv4 devices (e.g Jetson Xavier), please see the wiki on the opencv4_compatibility branch
+## For Opencv4 devices (e.g Jetson Xavier), please see the wiki on the [opencv4_compatibility](https://github.com/simonernst/openpose_ros/tree/opencv4_compatibility) branch
 
 
 ## Installation Steps
