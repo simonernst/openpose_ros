@@ -33,9 +33,9 @@ Example ROS catkin package that utilizes the OpenPose library from https://githu
    ```bash
    cd openpose
    cd models && sh getModels.sh && cd ..
-	mkdir build && cd build && cmake ..
-	make -j`nproc`
-	sudo make install
+   mkdir build && cd build && cmake ..
+   make -j`nproc`
+   sudo make install
     ```
 Make sure to run `sudo make install` in the build folder at the end.    
     
